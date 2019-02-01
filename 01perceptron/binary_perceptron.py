@@ -16,7 +16,8 @@ class Perceptron(object):
         return int( wx > 0)
 
     def train(self, features, labels):
-        self.w = [0.0] * (len(features[0]) + 1)
+        # 初始化w   注意：这里将b也加进去w里了
+        self.w = [0.001] * (len(features[0]) + 1)
 
         correct_count = 0
         iter = 0
@@ -39,7 +40,7 @@ class Perceptron(object):
                 if correct_count > self.max_iteration:
                     break
                 continue
-            # 错误分类，更新
+            # 错误分类，则更新
             for i in range(len(self.w)):
                 self.w[i] += self.learning_step * (y * x[i])
 
