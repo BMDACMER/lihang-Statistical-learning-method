@@ -27,7 +27,7 @@ class Perceptron(object):
             # 其中参数a是下限，参数b是上限，生成的随机数n: a <= n <= b。
             index = np.random.randint(0, len(labels) - 1)
             x = list(features[index])
-            # 将bais加入到 x 矩阵中去
+            # 将bais加入到 x 矩阵中去   初始化为1.0
             x.append(1.0)
             # labels 取值为0和1    执行以下操作将labels转换为-1 或者 1 的取值
             # 此目的有助于预测准确性的提高
@@ -85,3 +85,8 @@ if __name__ == '__main__':
     score = accuracy_score(test_labels, test_predict)
     print("The accruacy score is ", score)
 
+
+    # 错误分类数
+    error_numbers = np.sum(test_labels != test_predict)
+    print("The error classfication number is ", error_numbers )
+    print("The error score is ", error_numbers / np.sum(test_labels))
